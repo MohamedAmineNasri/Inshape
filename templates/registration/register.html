@@ -4,90 +4,44 @@
 {% block title %}Register{% endblock %}
 
 {% block content %}
-<style>
-    /* Form Container Styling */
-    form {
-        background-color: #fff;
-        border-radius: 8px;
-        padding: 2rem;
-        font-weight: 700;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        margin: 0 auto;
-        width: 400px;
-    }
-
-    /* Input, Select, Textarea Styling */
-    form input,
-    form select,
-    form textarea {
-        width: 100%;
-        margin-bottom: 12px;
-        padding: 1rem;
-        box-sizing: border-box;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-        transition: border-color 0.3s ease;
-    }
-
-    form input:focus,
-    form select:focus,
-    form textarea:focus {
-        outline: none;
-        border-color: #e63946; /* Red border on focus */
-    }
-
-    /* Button Styling */
-    form button {
-        display: block;
-        width: 100%;
-        padding: 15px;
-        font-size: 18px;
-        background-color: #e63946; /* Red color */
-        border: none;
-        color: white;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.3s ease-in;
-    }
-
-    form button:hover {
-        background-color: #d62828; /* Darker red on hover */
-    }
-
-    /* Error Messages */
-    form .errorlist li {
-        list-style-type: none;
-        color: #e63946;
-        margin-bottom: 8px;
-    }
-
-    /* Responsive Design */
-    @media screen and (max-width: 600px) {
-        form {
-            width: 90%;
-        }
-    }
-</style>
 
 <section class="hero-section d-flex justify-content-center align-items-center" 
-         style="background-color: #111; height: 130vh;">
-    <div class="container" style="width: 80%; max-width: 500px;">
+         style="background-color: #111; min-height: 150vh;">
+    <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12">
-                <div class="form-container p-4">
-                    <h2 class="text-center mb-4 text-white font-weight-bold">Register</h2>
+            <div class="col-lg-4 col-md-8 mx-auto">
+                <div class="ps-item text-center p-4" style="background-color: #464646; border-radius: 10px; cursor: pointer;" 
+                     onmouseover="this.querySelector('.hover-text').style.color='#fff'; 
+                                  this.querySelectorAll('.list-unstyled li').forEach(li => li.style.color='#fff');" 
+                     onmouseout="this.querySelector('.hover-text').style.color='#aaa'; 
+                                 this.querySelectorAll('.list-unstyled li').forEach(li => li.style.color='#bbb');">
+                    <h3 class="mb-4" style="color: #fff;">Register</h3>
+                    
+                    <p class="pi-price mb-4">
+                        <span class="hover-text" style="font-size: 1.2rem; color: #aaa; transition: color 0.3s;">
+                            Please fill in the form to create an account.
+                        </span>
+                    </p>
+
                     <form method="post" action="{% url 'register' %}">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <button type="submit">Register</button>
+                        <button type="submit" class="primary-btn pricing-btn" style="border-radius: 25px; margin-bottom: 10px; display: inline-block; transform: translateY(5px); background-color: #FF0000; color: #fff; padding: 10px 20px; border: none; cursor: pointer; transition: background-color 0.3s;">
+                            Register
+                        </button>
                         <div class="text-center mt-3">
-                            <a href="{% url 'login' %}" class="text-primary" 
-                               style="text-decoration: none; font-weight: bold;">
+                            <a href="{% url 'login' %}" class="primary-btn pricing-btn" 
+                               style="border-radius: 25px; margin-bottom: 10px; display: inline-block; transform: translateY(5px); background-color: #FF0000; color: #fff; padding: 10px 20px; border: none; cursor: pointer; transition: background-color 0.3s; text-decoration: none;">
                                 Already have an account?
                             </a>
                         </div>
                     </form>
+
+                    <ul class="list-unstyled" style="color: #bbb;">
+                        <li style="transition: color 0.3s;">Access to personalized features</li>
+                        <li style="transition: color 0.3s;">Stay up-to-date with updates</li>
+                        <li style="transition: color 0.3s;">Track your progress</li>
+                    </ul>
                 </div>
             </div>
         </div>

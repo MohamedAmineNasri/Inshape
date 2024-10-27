@@ -4,73 +4,57 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<style>
-    form {
-        background-color: white;
-        border-radius: 5%;
-        padding: 2rem;
-        font-weight: 700;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        margin: 0 auto;
-        width: 400px; /* Increased width for the form */
-    }
-
-    form input,
-    form select,
-    form textarea {
-        width: 100%;
-        margin-bottom: 10px;
-        padding: 10px;
-        box-sizing: border-box;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        border: none;
-        padding: 1em;
-    }
-
-    form button {
-        display: block;
-        width: 100%;
-        padding: 15px;
-        font-size: 16px;
-        background-color: rgb(255, 0, 0); /* Red */
-        border: none;
-        color: white;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease-in;
-    }
-    
-    form button:hover {
-        background-color: rgb(220, 20, 60); /* Lighter shade of red on hover */
-    }
-    
-
-    form .errorlist li {
-        list-style-type: none;
-        color: rgb(216, 6, 114);
-    }
-
-    @media screen and (max-width: 600px) {
-        form {
-            width: 90%; /* Maintain responsiveness */
-        }
-    }
-</style>
 
 <section class="hero-section d-flex justify-content-center align-items-center" style="background-color: #111; min-height: 100vh;">
-    <div class="container" style="width: 80%; max-width: 500px;"> 
+    <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12">
-                <div class="form-container p-4">
-                    <h2 class="text-center mb-4 text-white font-weight-bold">Login</h2>
+            <div class="col-lg-4 col-md-8 mx-auto">
+                <div class="ps-item text-center p-4" style="background-color: #464646; border-radius: 10px; cursor: pointer;" 
+                     onmouseover="this.querySelector('.hover-text').style.color='#fff'; 
+                                  this.querySelectorAll('.list-unstyled li').forEach(li => li.style.color='#fff');" 
+                     onmouseout="this.querySelector('.hover-text').style.color='#aaa'; 
+                                 this.querySelectorAll('.list-unstyled li').forEach(li => li.style.color='#bbb');">
+                    <h3 class="mb-4" style="color: #fff;">Login</h3>
+                    
+                    <p class="pi-price mb-4">
+                        <span class="hover-text" style="font-size: 1.2rem; color: #aaa; transition: color 0.3s;">
+                            Please log in or register to continue.
+                        </span>
+                    </p>
+
                     <form method="post" action="{% url 'login' %}">
                         {% csrf_token %}
-                        {{ form.as_p }}
-                        <button type="submit">Login</button>
+                        <div style="margin-bottom: 15px;">
+                            <label for="username" style="display: block; margin-bottom: 5px; color: #aaa; font-size: 14px;">Username</label>
+                            <input type="text" name="username" id="username" 
+                                   style="width: 100%; padding: 10px 15px; border: none; border-radius: 5px; background-color: #333; color: #fff; font-size: 16px; transition: background-color 0.3s, box-shadow 0.3s; box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);"
+                                   onfocus="this.style.backgroundColor='#444'; this.style.boxShadow='0 0 8px rgba(0, 155, 255, 0.7)';" 
+                                   onblur="this.style.backgroundColor='#333'; this.style.boxShadow='0 0 5px rgba(255, 255, 255, 0.1)';" 
+                                   required>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <label for="password" style="display: block; margin-bottom: 5px; color: #aaa; font-size: 14px;">Password</label>
+                            <input type="password" name="password" id="password" 
+                                   style="width: 100%; padding: 10px 15px; border: none; border-radius: 5px; background-color: #333; color: #fff; font-size: 16px; transition: background-color 0.3s, box-shadow 0.3s; box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);"
+                                   onfocus="this.style.backgroundColor='#444'; this.style.boxShadow='0 0 8px rgba(0, 155, 255, 0.7)';" 
+                                   onblur="this.style.backgroundColor='#333'; this.style.boxShadow='0 0 5px rgba(255, 255, 255, 0.1)';" 
+                                   required>
+                        </div>
+                        <button type="submit" class="primary-btn pricing-btn" style="border-radius: 25px; margin-bottom: 10px; display: inline-block; transform: translateY(5px); background-color: #FF0000; color: #fff; padding: 10px 20px; border: none; cursor: pointer; transition: background-color 0.3s;">
+                            Login
+                        </button>
                         <div class="text-center mt-3">
-                            <a href="{% url 'password_reset' %}" class="text-primary">Lost Password?</a>
+                            <a href="{% url 'password_reset' %}" class="primary-btn pricing-btn" style="border-radius: 25px; margin-bottom: 10px; display: inline-block; transform: translateY(5px); background-color: #FF0000; color: #fff; padding: 10px 20px; border: none; cursor: pointer; transition: background-color 0.3s;">
+                                Lost Password?
+                            </a>
                         </div>
                     </form>
+
+                    <ul class="list-unstyled" style="color: #bbb;">
+                        <li style="transition: color 0.3s;">Access to personalized features</li>
+                        <li style="transition: color 0.3s;">Stay up-to-date with updates</li>
+                        <li style="transition: color 0.3s;">Track your progress</li>
+                    </ul>
                 </div>
             </div>
         </div>
