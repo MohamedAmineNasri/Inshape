@@ -12,6 +12,8 @@ from django.http import HttpResponse
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer, ChatterBotCorpusTrainer
 
+
+
 load_dotenv()
 
 
@@ -137,6 +139,7 @@ def error_404(request):
 
 def contact(request):
     return render(request, 'contact.html')
+
 
 
 def profile(request):

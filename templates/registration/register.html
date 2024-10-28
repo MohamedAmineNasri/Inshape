@@ -4,43 +4,39 @@
 {% block title %}Register{% endblock %}
 
 {% block content %}
-
 <section class="hero-section d-flex justify-content-center align-items-center" 
-         style="background-color: #111; min-height: 150vh;">
-    <div class="container">
+         style="background-color: #111; height: 130vh; ">
+    <div class="container" style="max-width: 600px;">
         <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-8 mx-auto">
-                <div class="ps-item text-center p-4" style="background-color: #464646; border-radius: 10px; cursor: pointer;" 
-                     onmouseover="this.querySelector('.hover-text').style.color='#fff'; 
-                                  this.querySelectorAll('.list-unstyled li').forEach(li => li.style.color='#fff');" 
-                     onmouseout="this.querySelector('.hover-text').style.color='#aaa'; 
-                                 this.querySelectorAll('.list-unstyled li').forEach(li => li.style.color='#bbb');">
-                    <h3 class="mb-4" style="color: #fff;">Register</h3>
-                    
-                    <p class="pi-price mb-4">
-                        <span class="hover-text" style="font-size: 1.2rem; color: #aaa; transition: color 0.3s;">
-                            Please fill in the form to create an account.
-                        </span>
+            <div class="col-lg-8 col-md-10">
+                <div class="form-container text-center p-4" 
+                     style="background-color: #464646; border-radius: 10px; transition: all 0.3s;">
+                    <h2 class="mb-4 text-white font-weight-bold">Welcome, New User</h2>
+                    <p style="font-size: 1.2rem; color: #aaa; transition: color 0.3s;">
+                        Please fill in the details to create your account.
                     </p>
 
                     <form method="post" action="{% url 'register' %}">
                         {% csrf_token %}
-                        {{ form.as_p }}
-                        <button type="submit" class="primary-btn pricing-btn" style="border-radius: 25px; margin-bottom: 10px; display: inline-block; transform: translateY(5px); background-color: #FF0000; color: #fff; padding: 10px 20px; border: none; cursor: pointer; transition: background-color 0.3s;">
+                        <div class="form-group mb-3">
+                            {{ form.as_p }}
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block mb-3" 
+                                style="border-radius: 25px; transition: transform 0.2s;">
                             Register
                         </button>
-                        <div class="text-center mt-3">
-                            <a href="{% url 'login' %}" class="primary-btn pricing-btn" 
-                               style="border-radius: 25px; margin-bottom: 10px; display: inline-block; transform: translateY(5px); background-color: #FF0000; color: #fff; padding: 10px 20px; border: none; cursor: pointer; transition: background-color 0.3s; text-decoration: none;">
-                                Already have an account?
+                        <div class="text-center">
+                            <a href="{% url 'login' %}" class="text-primary" 
+                               style="text-decoration: none; font-weight: bold;">
+                                Already have an account? Login
                             </a>
                         </div>
                     </form>
 
-                    <ul class="list-unstyled" style="color: #bbb;">
-                        <li style="transition: color 0.3s;">Access to personalized features</li>
-                        <li style="transition: color 0.3s;">Stay up-to-date with updates</li>
-                        <li style="transition: color 0.3s;">Track your progress</li>
+                    <ul class="list-unstyled mt-4" style="color: #bbb;">
+                        <li style="transition: color 0.3s;">✔ Access to personalized features</li>
+                        <li style="transition: color 0.3s;">✔ Stay up-to-date with updates</li>
+                        <li style="transition: color 0.3s;">✔ Track your progress</li>
                     </ul>
                 </div>
             </div>
